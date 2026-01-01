@@ -45,7 +45,7 @@ Terraform is great for IaC, but these errors pop up all the time and can waste h
 5. **Error: Unsupported Terraform Core Version**  
    Your config needs a newer (or different) version of Terraform than you have.  
    **Why it happens:**  
-   - `required_version` constraint doesn't match.  
+   - `required_version` constraint doesn't match.     
    - Using features from a newer release.  
    **Fix:**  
    - Upgrade Terraform, or loosen the version constraint.
@@ -93,3 +93,13 @@ Terraform is great for IaC, but these errors pop up all the time and can waste h
     **Fix:**  
     - Import it: `terraform import <resource_address> <id>`.  
     - Or refresh state with `terraform refresh` (careful with that).
+11. **Error: Invalid provider configuration**  
+    Terraform fails to initialize a provider due to wrong or missing configuration.  
+    **Why it happens:**  
+    - Provider block is missing required parameters.  
+    - Incorrect version constraints or authentication setup.  
+    **Fix:**  
+    - Check the provider documentation for required arguments.  
+    - Update your provider block and run:  
+    ```bash
+    terraform init -upgrade
